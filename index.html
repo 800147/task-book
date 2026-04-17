@@ -16,10 +16,133 @@
     />
     <link rel="stylesheet" href="./style.css" />
     <script type="module" src="./script.js"></script>
+    <style>
+      .CharacterChooser {
+        display: grid;
+        grid-auto-flow: column;
+        width: 100%;
+        gap: var(--size-s);
+      }
+      .CharacterChooser-Character {
+        border: solid var(--size-s) light-dark(var(--light-2), var(--dark-2));
+        border-radius: var(--size-xl);
+        background-color: var(--light-1);
+
+        &:has(input:checked) {
+          border-color: var(--blue-color);
+        }
+      }
+      .CharacterChooser-CharacterImg {
+        display: block;
+        width: 100%;
+        height: auto;
+
+        /*@media (prefers-color-scheme: dark) {
+          filter: invert(100%);
+        }*/
+      }
+      .VisuallyHidden {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
+
+      .DownloadButton:not(
+        main:has(.Radio_cat:checked) .DownloadButton_cat,
+        main:has(.Radio_magician:checked) .DownloadButton_magician,
+        main:has(.Radio_fairy:checked) .DownloadButton_fairy
+      ) {
+        display: none;
+      }
+    </style>
   </head>
   <body class="Document">
     <main>
       <h1>Задачник с персонажами</h1>
+      <h2>Выбери персонажа</h2>
+      <section class="CharacterChooser">
+        <label
+          class="CharacterChooser-Character CharacterChooser-Character_cat"
+        >
+          <input
+            class="VisuallyHidden Radio Radio_cat"
+            type="radio"
+            name="character"
+            checked
+          />
+          <img
+            class="CharacterChooser-CharacterImg"
+            src="./files/cat.png"
+            width="406"
+            height="634"
+          />
+        </label>
+        <label
+          class="CharacterChooser-Character CharacterChooser-Character_magician"
+        >
+          <input
+            class="VisuallyHidden Radio Radio_magician"
+            type="radio"
+            name="character"
+          />
+          <img
+            class="CharacterChooser-CharacterImg"
+            src="./files/magician.png"
+            width="406"
+            height="634"
+          />
+        </label>
+        <label
+          class="CharacterChooser-Character CharacterChooser-Character_fairy"
+        >
+          <input
+            class="VisuallyHidden Radio Radio_fairy"
+            type="radio"
+            name="character"
+          />
+          <img
+            class="CharacterChooser-CharacterImg"
+            src="./files/fairy.png"
+            width="406"
+            height="634"
+          />
+        </label>
+      </section>
+      <h2>Скачай документ</h2>
+      <figure class="DownloadButton DownloadButton_cat">
+        <a
+          class="Document-Button"
+          style="--color: var(--blue-color)"
+          href="./files/cat.pdf"
+          download
+        >
+          скачать с котом
+        </a>
+      </figure>
+      <figure class="DownloadButton DownloadButton_magician">
+        <a
+          class="Document-Button"
+          style="--color: var(--blue-color)"
+          href="./files/magician.pdf"
+          download
+        >
+          скачать с волшебником
+        </a>
+      </figure>
+      <figure class="DownloadButton DownloadButton_fairy">
+        <a
+          class="Document-Button"
+          style="--color: var(--blue-color)"
+          href="./files/fairy.pdf"
+          download
+        >
+          скачать с феей
+        </a>
+      </figure>
     </main>
   </body>
 </html>
