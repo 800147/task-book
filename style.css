@@ -1,0 +1,40 @@
+.VisuallyHidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.CharacterChooser {
+  display: grid;
+  grid-auto-flow: column;
+  width: 100%;
+  gap: var(--size-s);
+}
+
+.CharacterChooser-Character {
+  border: solid var(--size-s) light-dark(var(--light-2), var(--dark-2));
+  border-radius: var(--size-xl);
+  background-color: var(--light-1);
+
+  &:has(input:checked) {
+    border-color: var(--blue-color);
+  }
+}
+
+.CharacterChooser-CharacterImg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.DownloadButton:not(
+  main:has(.Radio_cat:checked) .DownloadButton_cat,
+  main:has(.Radio_magician:checked) .DownloadButton_magician,
+  main:has(.Radio_fairy:checked) .DownloadButton_fairy
+) {
+  display: none;
+}
